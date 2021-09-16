@@ -1,10 +1,13 @@
+on: push
+
 jobs:
   weekday_job:
     runs-on: ubuntu-latest
     env:
       DAY_OF_WEEK: Mon
     steps:
-      - name: "Hello world with week day"
+      - name: "Hello world"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
         run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is $DAY_OF_WEEK!"
         env:
           FIRST_NAME: Mona
