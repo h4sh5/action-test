@@ -14,9 +14,6 @@ jobs:
   build:
     runs-on: ubuntu:latest
     steps:
-    - shell: bash
-      env:
-        URL: ${{ secrets.url }}
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -25,6 +22,8 @@ jobs:
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run my script
+      env:
+        URL: ${{ secrets.url }}
       run: |
         python envapiget.py  | tee result.txt
     - name: Archive production artifacts
