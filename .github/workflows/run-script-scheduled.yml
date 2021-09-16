@@ -14,9 +14,10 @@ jobs:
   build:
     runs-on: ubuntu:latest
     steps:
-    - name: thing
-    run: |
-      echo $URL
-    env:
+    - name: thing, indent below
+      shell: bash
+      run: |
+        echo $URL
+      env:
         URL: ${{ secrets.url }}
     
