@@ -26,11 +26,12 @@ jobs:
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
+    
+      
+    - name: run my script
     - shell: bash
       env:
         URL: ${{ secrets.url }}
-      
-    - name: run my script
       run: |
         python envapiget.py  | tee result.txt
         
