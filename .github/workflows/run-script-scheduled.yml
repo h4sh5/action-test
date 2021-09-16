@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu:latest
     steps:
     - name: thing
-    # run has to be defined before env??
     run: |
       echo $URL
     env:
