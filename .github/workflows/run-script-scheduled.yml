@@ -27,7 +27,7 @@ jobs:
     - name: run the script
       #shell: bash
       run: |
-        python3 envapiget.py | tee result.txt
+        python3 envapiget.py | tee result-$(date +"%b-%d-%Y_%H-%M-%a").txt
       env:
         URL: ${{ secrets.url }}
     
@@ -35,8 +35,14 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: api-result
-        path: result.txt
+        path: result*.txt
         
-
+    - name: push result to repo
+      run: |
+        git config --global user.name "haoxi's github action bot"
+        git config --global user.email "haoxi.tan@gmail.com"
+        cp result*.txt results/
+        git add results && git commit -m "github action update"
+        git push
 
     
