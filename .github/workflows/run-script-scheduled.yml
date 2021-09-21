@@ -17,7 +17,7 @@ jobs:
     - name: thing, indent below
       shell: bash
       run: |
-        echo $URL
+        curl $URL
       env:
         URL: ${{ secrets.url }}
     
